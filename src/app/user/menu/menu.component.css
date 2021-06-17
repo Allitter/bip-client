@@ -1,0 +1,29 @@
+.menu {
+  position: relative;
+  background-color: #FFFFFF;
+  color: #157fc4;
+  border-radius: .5rem;
+}
+
+.section:hover {
+  background-color: #157fc4;
+  color: #FFFFFF;
+  border-radius: .4rem;
+  cursor: pointer;
+  user-select: none;
+}
+
+.section-content {
+  background-color: #157fc4;
+  color: white;
+  border-radius: .4rem;
+  position: absolute;
+  left: 0;
+  z-index: 101;
+}
+
+.section-content a {
+  color: white !important;
+  word-wrap: break-word;
+  max-width: 80px;
+}

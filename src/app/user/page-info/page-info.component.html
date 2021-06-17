@@ -1,0 +1,17 @@
+<div class="page-info my-3">
+  <div *ngIf="page !== undefined && section !== undefined; else contentNotLoaded">
+    <div *ngIf="section.pages.length > 1" class="local-nav p-3 shadow-sm">
+      <div class="my-2" *ngFor="let p of section.pages">
+        <a [routerLink]="['/pages/' + p.id]">{{p.name}}</a>
+      </div>
+    </div>
+    <div [class.ml-3]="section.pages.length > 1" class="page-content bg-white w-100 p-3 shadow-sm">
+      <div [innerHTML]="page.content | safeHtml"></div>
+    </div>
+  </div>
+  <ng-template #contentNotLoaded>
+    <div>Загрузка...</div>
+  </ng-template>
+</div>
+
+

@@ -1,0 +1,65 @@
+<svg width="145" height="145" xmlns="http://www.w3.org/2000/svg">
+ <g id="Layer_1">
+  <title>Layer 1</title>
+  <defs>
+   <clipPath>
+    <rect id="svg_4" rx="16" fill="none" y="8" x="8" height="32" width="32"/>
+   </clipPath>
+   <clipPath>
+    <rect id="svg_5" rx="16" fill="none" y="507.8" x="392.57" height="32" width="32"/>
+   </clipPath>
+   <clipPath>
+    <rect id="svg_6" rx="16" fill="none" width="32" height="32" x="392.57" y="507.8"/>
+   </clipPath>
+   <clipPath>
+    <rect id="svg_7" rx="16" fill="none" y="507.8" x="392.57" height="32" width="32"/>
+   </clipPath>
+   <clipPath>
+    <rect id="svg_8" rx="16" fill="none" y="507.8" x="392.57" height="32" width="32"/>
+   </clipPath>
+   <clipPath>
+    <rect id="svg_9" rx="16" fill="none" width="32" height="32" x="392.57" y="507.8"/>
+   </clipPath>
+   <clipPath>
+    <rect id="svg_10" rx="16" fill="none" width="32" height="32" x="8" y="8"/>
+   </clipPath>
+   <clipPath>
+    <rect id="svg_11" rx="16" fill="none" width="32" height="32" x="392.57" y="507.8"/>
+   </clipPath>
+   <clipPath>
+    <rect id="svg_12" rx="16" fill="none" y="507.8" x="392.57" height="32" width="32"/>
+   </clipPath>
+   <clipPath>
+    <rect id="svg_13" rx="16" fill="none" y="507.8" x="392.57" height="32" width="32"/>
+   </clipPath>
+   <clipPath>
+    <rect id="svg_14" rx="16" fill="none" y="8" x="8" height="32" width="32"/>
+   </clipPath>
+   <clipPath>
+    <path id="svg_15" d="m0,706.47l1490.93,0l0,-706.47l-1490.93,0l0,706.47"/>
+   </clipPath>
+   <clipPath>
+    <path id="svg_16" d="m22.2,686.12l1447.73,0l0,-667.19l-1447.73,0l0,667.19"/>
+   </clipPath>
+   <clipPath>
+    <rect id="svg_17" rx="16" fill="none" y="507.8" x="392.57" height="32" width="32"/>
+   </clipPath>
+   <clipPath>
+    <rect id="svg_18" rx="16" fill="none" y="507.8" x="392.57" height="32" width="32"/>
+   </clipPath>
+   <clipPath>
+    <rect id="svg_19" rx="16" fill="none" y="507.8" x="392.57" height="32" width="32"/>
+   </clipPath>
+   <clipPath>
+    <rect id="svg_20" rx="16" fill="none" y="507.8" x="392.57" height="32" width="32"/>
+   </clipPath>
+   <clipPath>
+    <rect id="svg_21" rx="16" fill="none" y="8" x="8" height="32" width="32"/>
+   </clipPath>
+  </defs>
+  <g id="svg_23">
+   <path id="svg_22" fill="#da4453" d="m72.72463,0c40.10172,0 72.72463,32.62291 72.72463,72.72463c0,40.10172 -32.62291,72.72463 -72.72463,72.72463c-40.10172,0 -72.72463,-32.62291 -72.72463,-72.72463c0,-40.10172 32.62291,-72.72463 72.72463,-72.72463m0,24.54874c-8.8245,0 -17.09441,2.38963 -24.21436,6.54905l65.81673,65.81673c4.15942,-7.11995 6.54905,-15.38986 6.54905,-24.21436c0,-26.5469 -21.59637,-48.14326 -48.14326,-48.14326m0,96.28653c8.8245,0 17.09441,-2.38963 24.21436,-6.54905l-65.81673,-65.81673c-4.15942,7.11995 -6.54905,15.38986 -6.54905,24.21436c0,26.5469 21.59637,48.14326 48.14326,48.14326"/>
+  </g>
+ </g>
+
+</svg>

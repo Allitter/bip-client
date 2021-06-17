@@ -1,0 +1,127 @@
+div.news-list
+{
+  word-wrap: break-word;
+}
+div.news-list img.preview_picture
+{
+  float:left;
+  margin:0 4px 6px 0;
+}
+.news-date-time {
+  color:#486DAA;
+}
+
+/* End */
+
+
+/* Start:/bitrix/templates/main 1/styles.css?1618987797143*/
+*, ::after, ::before {
+  box-sizing: border-box;
+  border-radius: 6px;
+}
+
+.mobile-nav-wrapper {
+  background-color: #157fc4 !important;
+}
+/* End */
+
+
+/* Start:/bitrix/templates/main 1/template_styles.css?16189877973109*/
+@font-face {
+  font-family: Century-Gothic;
+  src: url("http://n.bip-ip.by/upload/CenturyGothic.ttf");
+}
+
+.logo_text {
+  margin: 0 10px;
+  color: #157fc4;
+  background: linear-gradient(135deg, #0B2349 33%, #0D61BC 66%, #8AA9D6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: #0B2349;
+  display: table;
+}
+
+.logo {
+  min-width: 100px;
+}
+
+.logo-block {
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  align-items: center;
+  justify-content: initial;
+  position: relative;
+  margin-bottom: 10px;
+}
+
+.carousel {
+  max-height: 500px;
+}
+
+.carousel-caption {
+  width: 90%;
+  background-color: rgb(0,0,0, 50%);
+  top: 5%;
+  left: 5%;
+  height: 15%;
+}
+
+.carousel-caption h5 {
+  margin: -15px 0;
+  font-size: 2rem !important;
+  font-family: "Century-Gothic";
+}
+
+.faculties {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 20px;
+}
+
+.faculties img {
+  max-width: 100%;
+}
+
+.item {
+  height: 400px;
+  width: 600px;
+}
+
+.faculty_grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 5% 5%;
+  width: 90%;
+  position: absolute;
+  left: 5%;
+  top: 2%;
+}
+
+img {
+  border-radius: 10px;
+}
+
+.faculty_item {
+  position: relative;
+}
+
+a>img:hover {
+  filter: brightness(108%);
+}
+
+@media (max-width: 770px) {
+  .faculties {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+
+.visible {
+  opacity: 1 !important;
+  z-index: 3 !important;
+  visibility: visible !important;
+}

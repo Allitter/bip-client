@@ -1,0 +1,37 @@
+<div class="news my-5">
+  <h3>Новости</h3>
+
+  <div class="form-group">
+    <input type="text"
+           class="form-control"
+           placeholder="Поиск"
+           [(ngModel)]="newsItemTitle"
+           (ngModelChange)="filterNews()">
+  </div>
+
+  <div class="row row-cols-1 row-cols-md-1 g-4">
+    <div class="col" *ngFor="let newsItem of filteredNews | slice: (page - 1) * pageSize : page * pageSize">
+      <div class="card mb-3">
+        <div class="row no-gutters">
+          <div class="col-md-2 p-1 d-flex align-items-center">
+            <a [routerLink]="[newsItem.id]">
+              <img style="max-height: 100%;" src="{{newsItem.previewImage}}" class="card-img" alt="...">
+            </a>
+          </div>
+          <div class="col-md-10">
+            <div class="card-body">
+              <a [routerLink]="[newsItem.id]"><h5 class="card-title fw-bold">{{newsItem.title}}</h5></a>
+              <p class="card-text">{{newsItem.shortDesc}}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ngb-pagination class="d-flex justify-content-center"
+                [collectionSize]="filteredNews.length"
+                [(page)]="page"
+                [pageSize]="pageSize">
+</ngb-pagination>

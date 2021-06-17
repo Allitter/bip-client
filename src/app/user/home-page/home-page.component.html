@@ -1,0 +1,188 @@
+<ngb-carousel class="my-3">
+  <ng-template ngbSlide>
+    <div class="picsum-img-wrapper">
+      <a href="http://bip-ip.by/30-let/">
+        <img src="./assets/old_files/30-лет.png" width="100%">
+      </a>
+    </div>
+  </ng-template>
+  <ng-template ngbSlide>
+    <div class="picsum-img-wrapper">
+      <a href="https://bip-ip.by/nash-institut/fakultety/fakultet-povysheniya-kvalifikacii-i-perepodgotovki/">
+        <img src="./assets/old_files/ФПК.png" width="100%">
+      </a>
+    </div>
+  </ng-template>
+  <ng-template ngbSlide>
+    <div class="picsum-img-wrapper">
+      <a href="http://n.bip-ip.by/kursy-inostrannykh-yazykov">
+        <img src="./assets/old_files/courses_ino.png" width="100%">
+      </a>
+    </div>
+  </ng-template>
+  <ng-template ngbSlide>
+    <div class="picsum-img-wrapper">
+      <a
+        href="http://n.bip-ip.by/upload/%D0%A1%D0%BF%D0%B5%D1%86%D0%B8%D0%B0%D0%BB%D1%8C%D0%BD%D0%BE%D1%81%D1%82%D1%8C%20%D0%9C%D0%B5%D0%B6%D0%B4%D1%83%D0%BD%D0%B0%D1%80%D0%BE%D0%B4%D0%BD%D1%8B%D0%B5%20%D0%BE%D1%82%D0%BD%D0%BE%D1%88%D0%B5%D0%BD%D0%B8%D1%8F.pdf">
+        <img src="./assets/old_files/МО.png" width="100%">
+      </a>
+    </div>
+  </ng-template>
+  <ng-template ngbSlide>
+    <div class="picsum-img-wrapper">
+      <a
+        href="https://bip-ip.by/abiturientu/%D0%AD%D0%BB%D0%B5%D0%BA%D1%82%D1%80%D0%BE%D0%BD%D0%BD%D1%8B%D0%B9%20%D0%BC%D0%B0%D1%80%D0%BA%D0%B5%D1%82%D0%B8%D0%BD%D0%B3.pdf">
+        <img src="./assets/old_files/ЭМ.png" width="100%">
+      </a>
+    </div>
+  </ng-template>
+  <ng-template ngbSlide>
+    <div class="picsum-img-wrapper">
+      <a
+        href="https://bip-ip.by/abiturientu/%D0%A3%D0%BF%D1%80%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5%20%D0%B8%D0%BD%D1%84%D0%BE%D1%80%D0%BC%D0%B0%D1%86%D0%B8%D0%BE%D0%BD%D0%BD%D1%8B%D0%BC%D0%B8%20%D1%80%D0%B5%D1%81%D1%83%D1%80%D1%81%D0%B0%D0%BC%D0%B8.pdf">
+        <img src="./assets/old_files/УИР.png" width="100%">
+      </a>
+    </div>
+  </ng-template>
+  <ng-template ngbSlide>
+    <div class="picsum-img-wrapper">
+      <a href="http://n.bip-ip.by/novosti/?ELEMENT_ID=1262">
+        <img src="./assets/old_files/CT.png" width="100%">
+      </a>
+    </div>
+  </ng-template>
+</ngb-carousel>
+
+
+<div class="container container-mb70" class="my-3">
+  <div class="faculties">
+    <div class="faculty_item " (click)="showFacultyInfo1=!showFacultyInfo1" (mouseover)="showFacultyInfo1=true"
+         (mouseleave)="showFacultyInfo1=false">
+      <img class="faculty_image" src="./assets/old_files/uf.png">
+      <div class="faculty_caption">
+        <div class="faculty_grid" style="top: 5%;">
+          <div *ngIf="showFacultyInfo1" calss="grid_item" style="grid-column-start: 1; grid-row-start: 1;"><a
+            href="http://n.bip-ip.by/nash-institut/fakultety/yuridicheskij-fakultet/"><img
+            src="./assets/old_files/decan.png" alt=""></a></div>
+          <div *ngIf="showFacultyInfo1" calss="grid_item" style="grid-column-start: 1; grid-row-start: 2;"><a
+            href="http://n.bip-ip.by/studentam/raspisanie-zanyatiy#uf"><img src="./assets/old_files/rasp.png"
+                                                                            alt=""></a></div>
+          <div *ngIf="showFacultyInfo1" calss="grid_item" style="grid-column-start: 1; grid-row-start: 3;"><a
+            href="https://bip-ip.by/novosti-yuridicheskogo-fakulteta/"><img src="./assets/old_files/news.png"
+                                                                            alt=""></a></div>
+          <div *ngIf="showFacultyInfo1" calss="grid_item" style="grid-column-start: 2; grid-row-start: 1;"><a
+            href="http://n.bip-ip.by/nash-institut/kafedry/kafedra-grazhdanskogo-prava-i-processa/"><img
+            src="./assets/old_files/uf_gpip.png" alt=""></a></div>
+          <div *ngIf="showFacultyInfo1" calss="grid_item" style="grid-column-start: 2; grid-row-start: 2;"><a
+            href="http://n.bip-ip.by/nash-institut/kafedry/kafedra-teorii-i-istorii-prava/"><img
+            src="./assets/old_files/uf_tip.png" alt=""></a></div>
+          <div *ngIf="showFacultyInfo1" calss="grid_item" style="grid-column-start: 2; grid-row-start: 3;"><a
+            href="http://n.bip-ip.by/nash-institut/kafedry/kafedra-ugolovnogo-prava-i-processa/"><img
+            src="./assets/old_files/uf_upip.png" alt=""></a></div>
+        </div>
+      </div>
+    </div>
+    <div class="faculty_item" (click)="showFacultyInfo2=!showFacultyInfo2" (mouseover)="showFacultyInfo2=true"
+         (mouseleave)="showFacultyInfo2=false">
+      <img class="faculty_image" src="./assets/old_files/fmp.png">
+      <div class="faculty_caption">
+        <div class="faculty_grid" style="top: 5%;">
+          <div *ngIf="showFacultyInfo2" calss="grid_item" style="grid-column-start: 1; grid-row-start: 1;"><a
+            href="http://n.bip-ip.by/nash-institut/fakultety/fakultet-mezhdunarodnogo-prava-i-yuridicheskoj-psixologii/"><img
+            src="./assets/old_files/decan.png" alt=""></a></div>
+          <div *ngIf="showFacultyInfo2" calss="grid_item" style="grid-column-start: 1; grid-row-start: 2;"><a
+            href="http://n.bip-ip.by/studentam/raspisanie-zanyatiy#fmp"><img src="./assets/old_files/rasp.png"
+                                                                             alt=""></a></div>
+          <div *ngIf="showFacultyInfo2" calss="grid_item" style="grid-column-start: 1; grid-row-start: 3;"><a
+            href="https://bip-ip.by/novosti-fakulteta-mezhdunarodnogo-prava/"><img src="./assets/old_files/news.png"
+                                                                                   alt=""></a></div>
+          <div *ngIf="showFacultyInfo2" calss="grid_item" style="grid-column-start: 2; grid-row-start: 1;"><a
+            href="http://n.bip-ip.by/nash-institut/kafedry/kafedra-filosofii-i-politologii/"><img
+            src="./assets/old_files/fmp_fip.png" alt=""></a></div>
+          <div *ngIf="showFacultyInfo2" calss="grid_item" style="grid-column-start: 2; grid-row-start: 2;"><a
+            href="http://n.bip-ip.by/nash-institut/kafedry/kafedra-inostrannyx-yazykov/"><img
+            src="./assets/old_files/fmp_inyaz.png" alt=""></a></div>
+          <div *ngIf="showFacultyInfo2" calss="grid_item" style="grid-column-start: 2; grid-row-start: 3;"><a
+            href="http://n.bip-ip.by/nash-institut/kafedry/kafedra-mezhdunarodnogo-prava/"><img
+            src="./assets/old_files/fmp_mp.png" alt=""></a></div>
+        </div>
+      </div>
+    </div>
+    <div class="faculty_item " (click)="showFacultyInfo3=!showFacultyInfo3" (mouseover)="showFacultyInfo3=true"
+         (mouseleave)="showFacultyInfo3=false">
+      <img class="faculty_image" src="./assets/old_files/epf.png">
+      <div class="faculty_caption">
+        <div class="faculty_grid" style="width: 80%; margin-left: 5%;">
+          <div *ngIf="showFacultyInfo3" calss="grid_item" style="grid-column-start: 1; grid-row-start: 1;"><a
+            href="http://n.bip-ip.by/nash-institut/fakultety/ekonomiko-pravovoj-fakultet/"><img
+            src="./assets/old_files/decan.png" alt=""></a></div>
+          <div *ngIf="showFacultyInfo3" calss="grid_item" style="grid-column-start: 1; grid-row-start: 2;"><a
+            href="http://n.bip-ip.by/studentam/raspisanie-zanyatiy#epf"><img src="./assets/old_files/rasp.png"
+                                                                             alt=""></a></div>
+          <div *ngIf="showFacultyInfo3" calss="grid_item" style="grid-column-start: 1; grid-row-start: 3;"><a
+            href="https://bip-ip.by/novosti-ekonomiko-pravovogo-fakulteta/"><img src="./assets/old_files/news.png"
+                                                                                 alt=""></a></div>
+          <div *ngIf="showFacultyInfo3" calss="grid_item" style="grid-column-start: 2; grid-row-start: 1;"><a
+            href="http://n.bip-ip.by/nash-institut/kafedry/kafedra-buxgalterskogo-ucheta-analiza-i-audita/"><img
+            src="./assets/old_files/epf_eibu.png" alt=""></a></div>
+          <div *ngIf="showFacultyInfo3" calss="grid_item" style="grid-column-start: 2; grid-row-start: 2;"><a
+            href="http://n.bip-ip.by/nash-institut/kafedry/kafedra-finansovogo-prava/"><img
+            src="./assets/old_files/epf_eifp.png" alt=""></a></div>
+          <div *ngIf="showFacultyInfo3" calss="grid_item" style="grid-column-start: 2; grid-row-start: 3;"><a
+            href="http://n.bip-ip.by/nash-institut/kafedry/kafedra-ekonomiko-matematicheskix-i-informacionnyx-disciplin/"><img
+            src="./assets/old_files/epf_limd.png" alt=""></a></div>
+          <div *ngIf="showFacultyInfo3" calss="grid_item" style="grid-column-start: 2; grid-row-start: 4;"><a
+            href="http://n.bip-ip.by/nash-institut/kafedry/kafedra-psixologii-i-pedagogiki-2/"><img
+            src="./assets/old_files/epf_pip.png" alt=""></a></div>
+        </div>
+      </div>
+    </div>
+    <div class="faculty_item " (click)="showFacultyInfo4=!showFacultyInfo4" (mouseover)="showFacultyInfo4=true"
+         (mouseleave)="showFacultyInfo4=false">
+      <img class="faculty_image" src="./assets/old_files/fpk.png">
+      <div class="faculty_caption">
+        <div class="faculty_grid" style="top: 5%;">
+          <div *ngIf="showFacultyInfo4" calss="grid_item" style="grid-column-start: 1; grid-row-start: 1;"><a
+            href="http://n.bip-ip.by/nash-institut/fakultety/fakultet-povysheniya-kvalifikacii-i-perepodgotovki/"><img
+            src="./assets/old_files/decan.png" alt=""></a></div>
+          <div *ngIf="showFacultyInfo4" calss="grid_item" style="grid-column-start: 1; grid-row-start: 3;"><a
+            href="https://bip-ip.by/novosti-fakulteta-povysheniya-kvalifikatsii-i-perepodgotovki-spetsialistov/"><img
+            src="./assets/old_files/news.png" alt=""></a></div>
+          <div *ngIf="showFacultyInfo4" calss="grid_item" style="grid-column-start: 1; grid-row-start: 2;"><a
+            href="http://n.bip-ip.by/studentam/raspisanie-zanyatiy"><img src="./assets/old_files/rasp.png" alt=""></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="news my-5">
+  <a routerLink="/news"><h3>Новости</h3></a>
+  <div class="row row-cols-1 row-cols-md-2 g-4">
+    <div class="col" *ngFor="let newsItem of news | slice: 0:4">
+      <div class="card mb-3 h-auto">
+        <div class="row no-gutters">
+          <div class="col-md-5 p-1 d-flex align-items-center" >
+            <a [routerLink]="['news/' + newsItem.id]">
+              <img style="max-height: 100%;" src="{{newsItem.previewImage}}" class="card-img" alt="...">
+            </a>
+          </div>
+          <div class="col-md-7">
+            <a [routerLink]="['news/' + newsItem.id]" class="text-decoration-none">
+              <div class="card-body">
+                <h5 title="{{newsItem.title}}" class="card-title fw-bold">
+                  {{newsItem.title | slice: 0: 32}}<span *ngIf="newsItem.title.length > 32">...</span></h5>
+                <p title="{{newsItem.shortDesc}}" class="card-text ">
+                  {{newsItem.shortDesc | slice: 0: 72}}<span *ngIf="newsItem.shortDesc.length > 72">...</span></p>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+

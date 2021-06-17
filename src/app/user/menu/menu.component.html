@@ -1,0 +1,20 @@
+<div [class.d-none]="sections.length === 0"
+     [class.d-flex]="sections.length > 0"
+     class="menu container container-top-navigation mt-3 flex-row flex-wrap p-2 shadow-sm">
+  <div  class="section p-2 m-2" *ngFor="let section of sections; let i = index"
+        (mouseenter)="toggleSection(i, true)"
+        (mouseleave)="toggleSection(i, false)"
+  >
+      {{section.title}}
+
+
+    <!--  Section pages  -->
+    <div [class.d-block]="showSectionContent[i]" [class.d-none]="!showSectionContent[i]">
+      <div class="section-content container p-2 d-flex flex-row flex-wrap">
+        <div class="page p-2 col-4" *ngFor="let page of sections[i].pages">
+          <a class="link-light" (click)="navigateToPage(page.id)">{{page.name}}</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

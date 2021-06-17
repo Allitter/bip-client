@@ -1,0 +1,11 @@
+<div class="d-flex flex-column h-100">
+  <div class="header" *ngIf="auth.isAuthenticated()">
+    <app-header></app-header>
+  </div>
+  <div class="d-flex flex-row">
+    <div class="main w-75 mx-auto mt-3">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>
+<app-toast class="main-toast"></app-toast>

@@ -1,0 +1,259 @@
+<div class="container">
+  <!-- top panel -->
+  <div class="row rounded mb-3 flex-row py-2 px-3 system-panel text-light">
+    <div class="col-3 d-flex align-items-center" style="font-size: 1.1rem;">
+      <i class="fa fa-info"></i>
+      <span class="ml-2">Мониторинг системы</span>
+    </div>
+    <div class="col d-flex flex-row justify-content-start align-items-center" style="font-size: .9rem;">
+      <div class="d-flex mx-2 flex-row justify-content-center align-items-center" >
+        <i class="fa fa-server"></i>
+        <span class="ml-1">Система: </span>
+        <span
+          [class.text-success]="systemHealth?.status === 'UP'"
+          [class.text-danger]="systemHealth?.status === 'DOWN'"
+          *ngIf="systemHealth?.status !== undefined && systemHealth?.status !== null; else loading">
+          {{systemHealth?.status}}
+        </span>
+      </div>
+      <div class="d-flex mx-2 flex-row justify-content-center align-items-center">
+        <i class="fa fa-database"></i>
+        <span class="ml-1">БД: </span>
+        <span [class.text-success]="systemHealth?.components?.db?.status === 'UP'"
+              [class.text-danger]="systemHealth?.components?.db?.status === 'DOWN'"
+              *ngIf="systemHealth?.components?.db?.status !== undefined && systemHealth?.components?.db?.status !== null; else loading">
+          {{systemHealth?.components?.db?.status}}
+        </span>
+      </div>
+      <div class="d-flex mx-2 flex-row justify-content-center align-items-center">
+        <i class="fas fa-hdd"></i>
+        <span class="ml-1">Диск: </span>
+        <span
+          *ngIf="systemHealth?.components?.diskSpace?.details.free !== undefined && systemHealth?.components?.diskSpace?.details.free !== null; else loading">
+          {{convertDiskSpace()}}
+
+        </span>
+      </div>
+      <div class="d-flex mx-2 flex-row justify-content-center align-items-center">
+        <i class="fa fa-microchip"></i>
+        <span class="ml-1">Процессоры: </span>
+        <span *ngIf="systemCpu?.measurements !== undefined && systemCpu?.measurements !== null; else loading">
+          {{systemCpu?.measurements[0]?.value}}
+        </span>
+      </div>
+      <div class="d-flex mx-2 flex-row justify-content-center align-items-center">
+        <i class="far fa-clock"></i>
+        <span class="ml-1">Работает: </span>
+        <span *ngIf="processUptime?.measurements !== undefined; else loading">
+          {{processUptime?.measurements[0]?.value | number: '1.0-0'}}{{processUptime?.baseUnit | slice: 0 :1 }}
+        </span>
+      </div>
+    </div>
+    <div style="font-size: 1.25rem;" class="col-1 d-flex justify-content-end align-items-center">
+      <a class="refresh-button" (click)="loadContent()"><i class="fas fa-redo"></i></a>
+    </div>
+  </div>
+  <ng-template #loading><span class="spinner-border spinner-border-sm m-1" role="status"></span></ng-template>
+
+  <!-- Statistic card -->
+  <div class="row">
+    <div class="col-md-4 col-xl-3">
+      <div class="card bg-c-green order-card">
+        <div *ngIf="http200traces !== undefined; else loading" class="card-block justify-content-between">
+          <div class="d-flex justify-content-between">
+            <div class="d-flex align-items-center justify-content-between">
+              <span><i class="fa fa-check-circle"></i></span>
+              <h6 class="m-0 ml-2">Код 200</h6>
+            </div>
+            <h2 class="text-right m-0 p-0"><span>{{http200traces?.length}}</span></h2>
+          </div>
+          <p class="mt-3">Время:
+            <span class="f-right" style="font-size: .75rem">
+              {{http200traces[0]?.timestamp | date: 'dd.MM.yyyy, hh:mm:ss'}}
+            </span>
+          </p>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="http404traces !== undefined" class="col-md-4 col-xl-3">
+      <div class="card bg-c-blue order-card">
+        <div *ngIf="http404traces !== undefined; else loading" class="card-block">
+          <div class="d-flex justify-content-between">
+            <div class="d-flex align-items-center justify-content-center">
+              <span><i class="fa fa-ban f-left"></i></span>
+              <h6 class="m-0 ml-2">Код 404</h6>
+            </div>
+            <h2 class="text-right m-0 p-0"><span>{{http404traces?.length}}</span></h2>
+          </div>
+          <p class="mt-3">Время:<span
+            class="f-right" style="font-size: .75rem">
+            {{http404traces[0]?.timestamp | date: 'dd.MM.yyyy, hh:mm:ss'}}
+          </span>
+          </p>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="http400traces !== undefined" class="col-md-4 col-xl-3">
+      <div class="card bg-c-orange order-card">
+        <div *ngIf="http400traces !== undefined; else loading" class="card-block">
+          <div class="d-flex justify-content-between">
+            <div class="d-flex align-items-center justify-content-center">
+              <span><i class="fa fa-exclamation f-left"></i></span>
+              <h6 class="m-0 ml-2">Код 400</h6>
+            </div>
+            <h2 class="text-right m-0 p-0"><span>{{http400traces?.length}}</span></h2>
+          </div>
+          <p class="mt-3">Время:<span
+            class="f-right"
+            style="font-size: 0.75rem">{{http400traces[0]?.timestamp | date: 'dd.MM.yyyy, hh:mm:ss'}}</span></p>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="http500traces !== undefined" class="col-md-4 col-xl-3">
+      <div class="card bg-c-red order-card">
+        <div *ngIf="http500traces !== undefined; else loading" class="card-block">
+          <div class="d-flex justify-content-between">
+            <div class="d-flex align-items-center justify-content-center">
+              <span><i class="fa fa-bug f-left"></i></span>
+              <h6 class="m-0 ml-2">Код 500</h6>
+            </div>
+            <h2 class="text-right m-0 p-0"><span>{{http500traces?.length}}</span></h2>
+          </div>
+          <p class="mt-3">Время:<span
+            class="f-right"
+            style="font-size: .75rem">{{http500traces[0]?.timestamp | date: 'dd.MM.yyyy, hh:mm:ss'}}</span></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Request table -->
+  <table class="table">
+    <thead>
+    <tr>
+      <th scope="col">Время запроса</th>
+      <th scope="col">Метод</th>
+      <th scope="col">Обработка(ms)</th>
+      <th scope="col">Статус</th>
+      <th scope="col">URI</th>
+      <th scope="col">Обзор</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let trace of traceList | slice: (page - 1) * pageSize : page * pageSize">
+      <td>{{trace.timestamp}}</td>
+      <td>{{trace.request.method}}</td>
+      <td>{{trace.timeTaken}}</td>
+      <td>
+        <span class="text-light rounded py-1 px-2"
+              [class.bg-c-green]="trace.response.status === 200"
+              [class.bg-c-blue]="trace.response.status === 404"
+              [class.bg-c-orange]="trace.response.status === 400"
+              [class.bg-c-red]="trace.response.status === 500"
+              [class.text-dark]="httpDefaultTraces.includes(trace)"
+        >
+          {{trace.response.status}}
+        </span>
+
+      </td>
+      <td>{{trace.request.uri}}</td>
+      <td>
+        <button class="btn btn-outline-info"
+                (click)="showRequestInfo(requestInfoModal, trace)">
+          <i class="far fa-eye"></i></button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+
+  <ngb-pagination class="d-flex justify-content-center"
+                  [collectionSize]="traceList.length"
+                  [(page)]="page"
+                  [maxSize]="5"
+                  [rotate]="true"
+                  [ellipses]="false"
+                  [boundaryLinks]="true">
+  </ngb-pagination>
+</div>
+
+<ng-template #requestInfoModal let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-title">Информация о запросе</h4>
+    <button type="button" class="close" (click)="modal.dismiss()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div *ngIf="selectedTrace !== undefined && selectedTrace !== null; else loading">
+      <ul ngbNav #nav="ngbNav" [(activeId)]="activeInfoTab" class="nav-tabs">
+        <li [ngbNavItem]="1">
+          <a ngbNavLink>Запрос</a>
+          <ng-template ngbNavContent>
+            <div>
+              <h5 class="d-inline-block mr-2 text-wrap">Время запроса:</h5>
+              <span>{{selectedTrace.timestamp}}</span>
+            </div>
+            <div>
+              <h5 class="d-inline-block mr-2 text-wrap">Время исполнения(ms):</h5>
+              <span>{{selectedTrace['timeTaken']}}</span>
+            </div>
+            <div>
+              <h5 class="d-inline-block mr-2 text-wrap">Метод запроса:</h5>
+              <span>{{selectedTrace['request']['method']}}</span>
+            </div>
+            <div>
+              <h5 class="d-inline-block mr-2 text-wrap">Адрес отправителя:</h5>
+              <span>{{selectedTrace['request']['headers']['referer']}}</span>
+            </div>
+            <div>
+              <h5 class="d-inline-block mr-2 text-wrap">URI:</h5>
+              <span>{{selectedTrace['request']['uri']}}</span>
+            </div>
+            <div>
+              <h5 class="d-inline-block mr-2 text-wrap">Источник(Origin):</h5>
+              <span>{{selectedTrace['request']['headers']['origin']}}</span>
+            </div>
+            <div>
+              <h5 class="d-inline-block mr-2 text-wrap">Клиент:</h5>
+              <span>{{selectedTrace['request']['headers']['user-agent']}}</span>
+            </div>
+          </ng-template>
+        </li>
+        <li [ngbNavItem]="2">
+          <a ngbNavLink>Ответ</a>
+          <ng-template ngbNavContent>
+            <div>
+              <h5 class="d-inline-block mr-2 text-wrap">Статус:</h5>
+              <span>{{selectedTrace['response']['status']}}</span>
+            </div>
+            <div>
+              <h5 class="d-inline-block mr-2 text-wrap">Время:</h5>
+              <span *ngIf="selectedTrace['response']['headers']['Date'] !== undefined; else empty">
+                {{selectedTrace['response']['headers']['Date'][0] | date: 'dd.MM.yyyy, hh:mm:ss'}}
+              </span>
+            </div>
+            <div>
+              <h5 class="d-inline-block mr-2 text-wrap">Тип ответа:</h5>
+              <span *ngIf="selectedTrace['response']['headers']['Content-Type'] !== undefined; else empty">
+                {{selectedTrace['response']['headers']['Content-Type'][0]}}
+              </span>
+            </div>
+            <div>
+              <h5 class="d-inline-block mr-2 text-wrap">Источники, разрешенные сервером:</h5>
+              <span
+                *ngIf="selectedTrace['response']['headers']['Access-Control-Allow-Origin'] !== undefined; else empty">
+                {{selectedTrace['response']['headers']['Access-Control-Allow-Origin'][0]}}
+              </span>
+            </div>
+          </ng-template>
+        </li>
+      </ul>
+      <div [ngbNavOutlet]="nav" style="min-height: 300px" class="mt-2"></div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button type="button" ngbAutofocus class="btn" (click)="modal.close()">Закрыть</button>
+  </div>
+</ng-template>
+
+<ng-template #empty></ng-template>

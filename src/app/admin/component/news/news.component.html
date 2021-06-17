@@ -1,0 +1,48 @@
+<div class="news-controls d-flex justify-content-end my-2">
+  <a class="btn btn-success" routerLink="/admin/create/news">Добавить</a>
+</div>
+<div class="news">
+  <div *ngFor="let item of news | slice: (page - 1) * pageSize : page * pageSize"
+       class="news-item shadow-sm my-2 rounded p-2 d-flex justify-content-between">
+    <div class="newsInfo">
+      <h3 title="{{item.title}}" class="news-title">
+        {{item.title | slice: 0: 64}}<span *ngIf="item.title.length > 64">...</span>
+      </h3>
+      <p title="{{item.shortDesc}}">
+        {{item.shortDesc | slice: 0: 128}}<span *ngIf="item.shortDesc.length > 128">...</span>
+      </p>
+    </div>
+    <div class="news-item-controls d-flex flex-column justify-content-center">
+      <div class="item-controls d-flex me-2">
+        <a class="rounded-2" (click)="editNews(item.id)">
+          <img class="mx-1" src="../../../assets/images/edit.svg" alt="edit">
+        </a>
+        <a class="rounded-2 mx-3" (click)="openModal(content, item.id)">
+          <img class="mx-1" src="../../../assets/images/remove.svg" alt="remove">
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ngb-pagination class="d-flex justify-content-center"
+                [collectionSize]="news.length"
+                [(page)]="page"
+                [pageSize]="pageSize">
+</ngb-pagination>
+
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-title">Удаление новости</h4>
+    <button type="button" class="close" (click)="modal.dismiss()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <p>Вы точно хотите удалить эту новость?</p>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-secondary" (click)="modal.dismiss()">Отмена</button>
+    <button type="button" ngbAutofocus class="btn btn-danger" (click)="modal.close()">Удалить</button>
+  </div>
+</ng-template>

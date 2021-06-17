@@ -1,0 +1,39 @@
+<h1>Редактировать новость</h1>
+<div class="input-group input-group-sm mb-3 shadow-sm">
+  <div class="input-group-prepend">
+    <span class="input-group-text">Заголовок</span>
+  </div>
+  <input [(ngModel)]="title" type="text" class="form-control" aria-label="Small"
+         aria-describedby="inputGroup-sizing-sm" maxlength="1024">
+</div>
+
+<div class="input-group input-group-sm mb-3 shadow-sm">
+  <div class="input-group-prepend">
+    <span class="input-group-text">Описание</span>
+  </div>
+  <input [(ngModel)]="description" type="text" class="form-control" aria-label="Small"
+         aria-describedby="inputGroup-sizing-sm" maxlength="1024">
+</div>
+
+<div class="input-group input-group-sm mb-3 shadow-sm">
+  <div class="input-group-prepend">
+    <span class="input-group-text">Изображение для предварительного просмотра</span>
+  </div>
+  <input [(ngModel)]="previewImage" type="text" class="form-control" aria-label="Small"
+         aria-describedby="inputGroup-sizing-sm">
+</div>
+
+<div class="news-editor shadow-sm">
+  <ckeditor [(ngModel)]="content"
+            [config]="{
+              extraPlugins: '',
+              language: 'ru'
+            }"
+            maxlength="100000"
+  ></ckeditor>
+</div>
+
+<div class="d-flex justify-content-center my-4">
+  <button class="btn btn-danger mx-4" [routerLink]="['/admin', 'news']">Отменить</button>
+  <button class="btn btn-success mx-4" (click)="updateNews()">Обновить</button>
+</div>

@@ -1,0 +1,51 @@
+header {
+  background-color: #ffffff;
+}
+
+#header {
+  border-radius: .5rem;
+  box-shadow: 0 5px 15px 0 rgba(0, 0, 0, 0.1)
+}
+
+#top-line {
+  background-color: #157fc4;;
+  height: 35px;
+  border-radius: .5rem;
+}
+
+@font-face {
+  font-family: Century-Gothic;
+  src: url("http://n.bip-ip.by/upload/CenturyGothic.ttf");
+}
+
+.logo_text {
+  margin: 0 10px;
+  color: #157fc4;
+  background: linear-gradient(135deg, #0B2349 33%, #0D61BC 66%, #8AA9D6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: #0B2349;
+  display: table;
+}
+
+.logo {
+  min-width: 100px;
+}
+
+.logo-block {
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  align-items: center;
+  justify-content: initial;
+  position: relative;
+  margin-bottom: 10px;
+}
+
+a > img:hover {
+  filter: brightness(105%);
+}
+

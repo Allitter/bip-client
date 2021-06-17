@@ -1,0 +1,161 @@
+<header>
+  <div class="d-flex flex-row shadow-sm">
+
+    <div class="container-fluid d-flex py-2 px-2">
+      <div class="col-auto d-flex justify-content-center align-items-center">
+        <img class="logo my-auto" src="assets/images/atom.png" alt="logo">
+      </div>
+      <div class="header-nav d-flex flex-row justify-content-center align-items-center">
+        <div>
+          <a class="reference text-light"
+             routerLinkActive="active-link"
+             [routerLink]="['/admin', 'dashboard']">
+            Панель управления
+          </a>
+        </div>
+        <div class="ml-4">
+          <a class="reference text-light"
+             routerLinkActive="active-link"
+             [routerLink]="['/admin', 'sections']">
+            Разделы
+          </a>
+        </div>
+        <div class="ml-4">
+          <a class="reference text-light"
+             routerLinkActive="active-link"
+             [routerLink]="['/admin', 'news']">
+            Новости
+          </a>
+        </div>
+      </div>
+      <div class="col-auto ml-auto d-flex justify-content-center align-items-center">
+        <button class="btn btn-success btn-sm btn-logout"
+                (click)="openMediaLibrary(content)">
+          Медиа библиотека
+        </button>
+      </div>
+      <div class="col-auto ml-auto d-flex justify-content-center align-items-center">
+        <button class="btn btn-danger btn-sm btn-logout"
+                (click)="logout($event)">
+          Выйти
+        </button>
+      </div>
+
+    </div>
+  </div>
+</header>
+
+<ng-template #content let-modal>
+  <div class="modal-header flex-column" style="flex-basis: 100%">
+    <div class="d-flex flex-row justify-content-between" style="min-width: 100%">
+      <h4 class="modal-title">Медиа библиотека</h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="d-flex flex-row justify-content-between" style="min-width: 100%">
+      <div class="input-group mb-3 mt-3">
+        <input type="text" class="form-control" placeholder="Поиск по имени" [(ngModel)]="searchName"
+               (keyup.enter)="findFiles(searchName)">
+        <button class="btn btn-outline-secondary" type="button" id="button-addon2" (click)="findFiles(searchName)">
+          Найти
+        </button>
+      </div>
+      <div class="d-flex align-items-center">
+        <div class="input-group ml-5" style="min-width: 400px">
+          <div class="input-group-prepend">
+            <button [class.bg-success]="selectedFile !== null"
+                    [class.text-light]="selectedFile !== null"
+                    [class.disabled]="selectedFile === null"
+                    (click)="onUploadFiles()"
+                    class="input-group-text"
+                    style=""
+                    id="inputGroupFileAddon01">Добавить
+            </button>
+          </div>
+          <div class="custom-file">
+            <input type="file" name="file" class="custom-file-input" id="inputGroupFile01" accept="*/*"
+                   (change)="handleFileInput($event.target['files'])">
+            <label class="custom-file-label" for="inputGroupFile01"
+                   [ngModel]="">{{selectedFile === null ? 'Выберите файл' : selectedFile.name}}</label>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="w-100" *ngIf="fileStatus.status==='progress'">
+      <span>{{fileStatus.requestType}}</span>
+      <ngb-progressbar type="success"
+                       [value]="fileStatus.percent"
+                       [striped]="true"
+                       [animated]="true">
+      </ngb-progressbar>
+    </div>
+  </div>
+  <div class="modal-body">
+
+    <div *ngIf="documents === null || documents === undefined else showDocuments">
+      <span>Загрузка информации о файлах</span>
+      <span class="spinner-border spinner-border-sm ml-2" role="status" aria-hidden="true"></span>
+    </div>
+    <ng-template #showDocuments>
+      <div>
+        <div *ngFor="let file of documents">
+          <div class="card mb-3 text-decoration-none">
+            <div class="row no-gutters">
+              <div class="col-md-1 p-1">
+                <a class="rounded-2" (click)="copyMessage(file.name)">
+                  <img src="http://localhost:8080/download/{{file.descriptiveImage}}" style="max-width: 70px;" alt="img">
+                </a>
+              </div>
+              <div class="col-md-9">
+                <div class="card-body align-content-start">
+                  <a class="rounded-2" (click)="copyMessage(file.name)">
+                    {{file.originName}}
+                  </a>
+                </div>
+              </div>
+              <div class="col-md-2 file-controls d-flex flex-column justify-content-center align-items-center">
+                <div class="item-controls d-flex me-2">
+                  <a class="rounded-2" (click)="copyMessage(file.name)">
+                    <img class="mx-1" src="../../../assets/images/clipboard.svg" alt="Скопировать ссылку">
+                  </a>
+                  <a class="rounded-2 ml-3" (click)="downloadFile(file)">
+                    <img class="mx-1" src="../../../assets/images/download.svg" alt="Скачать">
+                  </a>
+                  <a class="rounded-2 ml-3" (click)="removeFile(removeFileModal, file.id)">
+                    <img class="mx-1" src="../../../assets/images/remove.svg" alt="remove">
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </ng-template>
+  </div>
+  <div class="modal-footer">
+    <div class="mr-auto" *ngIf="showCopiedMessage">
+      Ссылка скопирована в буфер обмена
+    </div>
+    <div>
+      <button type="button" class="btn btn-light" (click)="modal.close()">Закрыть</button>
+    </div>
+  </div>
+</ng-template>
+
+
+<ng-template #removeFileModal let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-title">Удаление файла</h4>
+    <button type="button" class="close" (click)="modal.dismiss()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <p>Вы точно хотите удалить этот файл?</p>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-secondary" (click)="modal.dismiss()">Отмена</button>
+    <button type="button" ngbAutofocus class="btn btn-danger" (click)="modal.close()">Удалить</button>
+  </div>
+</ng-template>

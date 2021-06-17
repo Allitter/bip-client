@@ -1,0 +1,120 @@
+<div class="news-controls d-flex justify-content-end my-2">
+  <a class="btn btn-primary" (click)="addSection(addSectionModal)">Добавить раздел</a>
+  <a class="btn btn-primary ml-2" routerLink="/admin/create/page">Добавить страницу</a>
+</div>
+
+<ngb-accordion #acc="ngbAccordion" activeIds="ngb-panel-0">
+  <ngb-panel *ngFor="let section of sections" id="section{{section.id}}">
+    <ng-template  ngbPanelHeader class="p-0">
+        <div class="d-flex align-items-center justify-content-start">
+          <h5 (click)="acc.toggle('section' + section.id)" class="m-0 btn btn-link">{{section.title === 'default' ? 'По умолчанию' : section.title}}</h5>
+          <div class="controls ml-auto" *ngIf="section.title !== 'default'">
+            <button (click)="addPage(section.id)"
+                    class="btn btn-primary " >Добавить страницу</button>
+            <button (click)="removeSection(removeSectionModal, section.id)"
+                    class="btn btn-danger ml-2" >Удалить</button>
+          </div>
+        </div>
+    </ng-template >
+    <ng-template ngbPanelContent let-panel>
+      <div class="container">
+        <div class="d-flex justify-content-center flex-wrap">
+          <div container="body" ngbDropdown *ngFor="let page of section.pages"
+               class="rounded bg-primary d-flex justify-content-center
+                      align-items-center text-wrap m-2"
+               style="width: 180px; cursor: pointer">
+            <div class="btn btn-outline-primary text-light"
+                 placement="top"
+                 [ngbTooltip]='page.name'
+                 [disableTooltip]="page.name.length < 13"
+                 container="body" id="dropdownBasic1" ngbDropdownToggle>
+
+              {{page.name | slice : 0: 12}}<span *ngIf="page.name.length > 12">...</span>
+            </div>
+            <div style="z-index: 99 !important;" ngbDropdownMenu aria-labelledby="dropdownBasic1">
+              <button ngbDropdownItem (click)="movePage(movePageModal, page.id)">Преместить</button>
+              <button ngbDropdownItem (click)="removePage(removePageModal, page.id)">Удалить</button>
+              <button ngbDropdownItem (click)="editPage(page.id)">Редактировать</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </ng-template>
+  </ngb-panel>
+</ngb-accordion>
+
+<!-- Add section modal -->
+<ng-template #addSectionModal let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title">Добавление раздела</h4>
+    <button type="button" class="close" (click)="modal.dismiss()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="input-group input-group-sm mb-3 shadow-sm">
+      <div class="input-group-prepend">
+        <span class="input-group-text">Заголовок</span>
+      </div>
+      <input [(ngModel)]="addSectionTitle" type="text" class="form-control" aria-label="Small"
+             aria-describedby="inputGroup-sizing-sm" maxlength="1024">
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-secondary" (click)="modal.dismiss()">Отмена</button>
+    <button type="button" class="btn btn-success" (click)="modal.close()">Создать</button>
+  </div>
+</ng-template>
+
+<!-- Move page modal -->
+<ng-template #movePageModal let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title">Перемещение страницы</h4>
+    <button type="button" class="close" (click)="modal.dismiss()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="input-group input-group-sm mb-3 shadow-sm">
+      <div class="input-group-prepend">
+        <span class="input-group-text">Раздел</span>
+      </div>
+      <input [(ngModel)]="movePageSection" [ngbTypeahead]="sectionSearch" type="text" class="form-control" aria-label="Small"
+             aria-describedby="inputGroup-sizing-sm" maxlength="1024">
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-secondary" (click)="modal.dismiss()">Отмена</button>
+    <button type="button" class="btn btn-success" (click)="modal.close()">Переместить</button>
+  </div>
+</ng-template>
+
+<!-- Remove page modal -->
+<ng-template #removePageModal let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title">Удаление страницы</h4>
+    <button type="button" class="close" (click)="modal.dismiss()"></button>
+  </div>
+  <div class="modal-body">
+    <p>Вы точно хотите удалить эту страницу?</p>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-secondary" (click)="modal.dismiss()">Отмена</button>
+    <button type="button" class="btn btn-danger" (click)="modal.close()">Удалить</button>
+  </div>
+</ng-template>
+
+<!-- Remove section modal -->
+<ng-template #removeSectionModal let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title">Удаление раздела</h4>
+    <button type="button" class="close" (click)="modal.dismiss()"></button>
+  </div>
+  <div class="modal-body">
+    <p>Вы точно хотите удалить этот раздел?</p>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-secondary" (click)="modal.dismiss()">Отмена</button>
+    <button type="button" class="btn btn-danger" (click)="modal.close()">Удалить</button>
+  </div>
+</ng-template>

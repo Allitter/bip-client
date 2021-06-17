@@ -1,0 +1,42 @@
+<form class="card p-4 mx-auto" style="width: 35%" [formGroup]="form" (ngSubmit)="submit()">
+  <h2>Войти в панель администратора</h2>
+
+  <div class="alert alert-danger" *ngIf="auth.error$ | async as error">
+    {{ error }}
+  </div>
+
+  <div class="alert alert-info" *ngIf="message">
+    {{ message }}
+  </div>
+
+  <div class="mb-3">
+    <label for="email" class="form-label">Email:</label>
+    <input id="email" type="email" class="form-control" formControlName="email"
+           [ngClass]="{invalid: form.get('email')!.touched && form.get('email')!.invalid}"
+           maxlength="1024"
+    >
+    <div class="validation"
+         *ngIf="form.get('email')!.touched && form.get('email')!.invalid"
+    >
+      <small *ngIf="form.get('email')!.errors!.required">Введите email</small>
+      <small *ngIf="form.get('email')!.errors!.email">Введите корректный email</small>
+    </div>
+  </div>
+  <div class="mb-3"
+  >
+    <label for="password" class="form-label">Пароль:</label>
+    <input id="password" type="password" class="form-control" formControlName="password"
+           [ngClass]="{invalid: form.get('password')!.touched && form.get('password')!.invalid}"
+           maxlength="1024"
+    >
+    <div class="validation"
+         *ngIf="form.get('password')!.touched && form.get('password')!.invalid"
+    >
+      <small *ngIf="form.get('password')!.errors!.required">Введите пароль</small>
+    </div>
+  </div>
+  <button type="submit" class="btn btn-primary w-25 mx-auto" [disabled]="form.invalid || submitted">
+    Войти
+    <span *ngIf="submitted" class="spinner-border spinner-border-sm" role="status"></span>
+  </button>
+</form>

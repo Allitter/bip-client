@@ -1,0 +1,7 @@
+.main-toast {
+  position: fixed;
+  left: auto;
+  right: auto;
+  min-width: 200px;
+  top: 10px;
+}

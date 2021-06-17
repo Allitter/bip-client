@@ -1,0 +1,4 @@
+<div class="page-content bg-white my-3 p-3">
+  <div *ngIf="newsItem !== undefined; else newsItemNotLoaded" [innerHTML]="newsItem.content | safeHtml"></div>
+  <ng-template #newsItemNotLoaded><div>Загрузка...</div></ng-template>
+</div>

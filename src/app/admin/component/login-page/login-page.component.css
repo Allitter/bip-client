@@ -1,0 +1,11 @@
+.invalid {
+  border-color: red;
+}
+
+.validation {
+  color: red;
+}
+
+form {
+  min-width: 540px;
+}

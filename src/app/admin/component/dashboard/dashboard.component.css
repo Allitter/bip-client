@@ -1,0 +1,66 @@
+.system-panel {
+  background-color: #ada9aa;
+}
+
+.refresh-button {
+  border-radius: 3px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: white;
+  cursor: pointer;
+}
+
+.refresh-button:hover {
+  background-color: rgb(153, 151, 151);
+}
+
+.refresh-button:active {
+  background-color: rgb(142, 141, 141);
+}
+
+.order-card {
+  color: #fff;
+}
+
+.bg-c-blue {
+  background: linear-gradient(45deg,#4099ff,#73b4ff);
+}
+
+.bg-c-green {
+  background: linear-gradient(45deg, #2ab809, #48e040);
+}
+
+.bg-c-orange {
+  background: linear-gradient(45deg, #ff7307, #e29c47);
+}
+
+.bg-c-red {
+  background: linear-gradient(45deg, #d41130, #d93351);
+}
+
+
+.card {
+  border-radius: 5px;
+  -webkit-box-shadow: 0 1px 2.94px 0.06px rgba(4,26,55,0.16);
+  box-shadow: 0 1px 2.94px 0.06px rgba(4,26,55,0.16);
+  border: none;
+  margin-bottom: 30px;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+
+.card .card-block {
+  padding: 25px;
+}
+
+.order-card i {
+  font-size: 26px;
+}
+
+.f-left {
+  float: left;
+}
+
+.f-right {
+  float: right;
+}

@@ -1,0 +1,34 @@
+.page-info {
+  display: flex;
+  flex-direction: row;
+}
+
+.local-nav {
+  position: sticky;
+  top: 0;
+  background-color: #FFFFFF;
+  border-radius: .4rem;
+  max-width: 280px;
+  height: fit-content;
+}
+
+.page-content {
+  border-radius: .4rem;
+}
+
+@media all and (max-width: 760px) {
+  .page-info {
+    flex-direction: column !important;
+  }
+
+  .local-nav {
+    max-width: 100%;
+    width: 100%;
+    position: relative;
+  }
+
+  .page-content {
+    margin: 0 !important;
+    margin-top: 1rem !important;
+  }
+}
